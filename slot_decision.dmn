@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_slot" name="Slot decision" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.30.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <decision id="slot_decision" name="Slot decision">
+    <decisionTable id="DecisionTable_slot" hitPolicy="UNIQUE">
+      <input id="Input_department" label="Department">
+        <inputExpression id="InputExpr_department" typeRef="string"><text>department</text></inputExpression>
+      </input>
+      <input id="Input_bookedCount" label="Booked count">
+        <inputExpression id="InputExpr_bookedCount" typeRef="number"><text>bookedCount</text></inputExpression>
+      </input>
+      <output id="Output_slotStatus" label="Slot status" name="slotStatus" typeRef="string">
+        <outputValues id="OutputValues_status"><text>"AVAILABLE","FULL"</text></outputValues>
+      </output>
+      <output id="Output_suggestedAction" label="Suggested action" name="suggestedAction" typeRef="string" />
+      <rule id="Rule_1">
+        <inputEntry id="Rule_1_in1"><text>"Cardiology"</text></inputEntry>
+        <inputEntry id="Rule_1_in2"><text>&gt;= 10</text></inputEntry>
+        <outputEntry id="Rule_1_out1"><text>"FULL"</text></outputEntry>
+        <outputEntry id="Rule_1_out2"><text>"Offer next available date or join the waitlist"</text></outputEntry>
+      </rule>
+      <rule id="Rule_2">
+        <inputEntry id="Rule_2_in1"><text>"Cardiology"</text></inputEntry>
+        <inputEntry id="Rule_2_in2"><text>&lt; 10</text></inputEntry>
+        <outputEntry id="Rule_2_out1"><text>"AVAILABLE"</text></outputEntry>
+        <outputEntry id="Rule_2_out2"><text>"Book the requested slot"</text></outputEntry>
+      </rule>
+      <rule id="Rule_3">
+        <inputEntry id="Rule_3_in1"><text>"Orthopedics"</text></inputEntry>
+        <inputEntry id="Rule_3_in2"><text>&gt;= 8</text></inputEntry>
+        <outputEntry id="Rule_3_out1"><text>"FULL"</text></outputEntry>
+        <outputEntry id="Rule_3_out2"><text>"Offer next available date or join the waitlist"</text></outputEntry>
+      </rule>
+      <rule id="Rule_4">
+        <inputEntry id="Rule_4_in1"><text>"Orthopedics"</text></inputEntry>
+        <inputEntry id="Rule_4_in2"><text>&lt; 8</text></inputEntry>
+        <outputEntry id="Rule_4_out1"><text>"AVAILABLE"</text></outputEntry>
+        <outputEntry id="Rule_4_out2"><text>"Book the requested slot"</text></outputEntry>
+      </rule>
+      <rule id="Rule_5">
+        <inputEntry id="Rule_5_in1"><text>"General Medicine"</text></inputEntry>
+        <inputEntry id="Rule_5_in2"><text>&gt;= 15</text></inputEntry>
+        <outputEntry id="Rule_5_out1"><text>"FULL"</text></outputEntry>
+        <outputEntry id="Rule_5_out2"><text>"Offer next available date or join the waitlist"</text></outputEntry>
+      </rule>
+      <rule id="Rule_6">
+        <inputEntry id="Rule_6_in1"><text>"General Medicine"</text></inputEntry>
+        <inputEntry id="Rule_6_in2"><text>&lt; 15</text></inputEntry>
+        <outputEntry id="Rule_6_out1"><text>"AVAILABLE"</text></outputEntry>
+        <outputEntry id="Rule_6_out2"><text>"Book the requested slot"</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="DMNDiagram_slot">
+      <dmndi:DMNShape id="DMNShape_slot" dmnElementRef="slot_decision">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

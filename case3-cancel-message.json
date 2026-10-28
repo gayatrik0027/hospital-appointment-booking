@@ -1,0 +1,7 @@
+{
+  "messageName": "cancel-booking",
+  "correlationKey": "987654321",
+  "variables": {
+    "cancelReason": "Patient request"
+  }
+}
